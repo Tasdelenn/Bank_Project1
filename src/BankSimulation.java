@@ -54,23 +54,29 @@ public class BankSimulation {
         int choice;
 
         // TODO ANA MENÜYÜ OLUŞTURUN VE MÜŞTERİYE YAPTIRDIĞINIZ SEÇİMLERLE, İLGİLİ METODLARA YÖNLENDİRİN
-        /*
-         * "\n----- BANKA İŞLEMLERİ -----"
-         * "1. Müşteri Listele"
-         * "2. Yeni Müşteri Ekle"
-         * "3. Müşteri İşlemleri"
-         * "0. Çıkış"
-         * "Seçiminizi yapın: "
-         */
-        //1//   listCustomers();
-        //2//   addCustomer();
-        //3//   customerOperationsMenu();
-        //0//   System.out.println("Çıkış yapılıyor...");
-        // //   System.out.println("Geçersiz seçim! Tekrar deneyin.");
-
-        // NOT: MÜŞTERİ ÇIKIŞ YAPMADIĞI SÜRECE MENÜDE KALMAYA DEVAM ETSİN
 
 
+        System.out.println("\n----- BANKA İŞLEMLERİ -----" +
+                "\n1. Müşteri Listele" +
+                "\n2. Yeni Müşteri Ekle" +
+                "\n3. Müşteri İşlemleri" +
+                "\n0. Çıkış" +
+                "\nSeçiminizi yapın: "
+        );
+
+        choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice)
+        {
+            //1//   listCustomers();
+            //2//   addCustomer();
+            //3//   customerOperationsMenu();
+            //0//   System.out.println("Çıkış yapılıyor...");
+            // //   System.out.println("Geçersiz seçim! Tekrar deneyin.");
+
+            // NOT: MÜŞTERİ ÇIKIŞ YAPMADIĞI SÜRECE MENÜDE KALMAYA DEVAM ETSİN
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
