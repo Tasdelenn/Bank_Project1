@@ -15,7 +15,7 @@ public class BankSimulation {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // CONSTRUCTORS
-    // public BankSimulation() metodu bir constructor'dır.
+    // public BankSimulation(){} metodu bir constructor'dır.
     // Constructor, bir sınıfın nesnesi oluşturulduğunda otomatik olarak çağrılan bir metottur
     // ve nesnenin başlatılması için kullanılır.
     // BankSimulation sınıfındaki bu constructor,
@@ -28,13 +28,21 @@ public class BankSimulation {
 
     // TODO AÇIKLAMADA BELİRTİLEN CONSTRUCTORLARI OLUŞTURUN
 
+    public BankSimulation() {
+        this.customers = new HashMap<>();
+        this.accounts = new ArrayList<>();
+        this.scanner = new Scanner(System.in);
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     public static void main(String[] args) {
 
         // TODO BANKSIMULATION SINIFININ NESNESİNİ OLUŞTURUNUZ
+        BankSimulation bankSimulation = new BankSimulation();
         // TODO  RUN METODUNU ÇAĞIRINIZ
+        bankSimulation.run();
 
 
     }
