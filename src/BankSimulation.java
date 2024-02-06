@@ -55,28 +55,37 @@ public class BankSimulation {
 
         // TODO ANA MENÜYÜ OLUŞTURUN VE MÜŞTERİYE YAPTIRDIĞINIZ SEÇİMLERLE, İLGİLİ METODLARA YÖNLENDİRİN
 
+       do{
+            System.out.println("\n----- BANKA İŞLEMLERİ -----" +
+                    "\n1. Müşteri Listele" +
+                    "\n2. Yeni Müşteri Ekle" +
+                    "\n3. Müşteri İşlemleri" +
+                    "\n0. Çıkış" +
+                    "\nSeçiminizi yapın: "
+            );
 
-        System.out.println("\n----- BANKA İŞLEMLERİ -----" +
-                "\n1. Müşteri Listele" +
-                "\n2. Yeni Müşteri Ekle" +
-                "\n3. Müşteri İşlemleri" +
-                "\n0. Çıkış" +
-                "\nSeçiminizi yapın: "
-        );
+            choice = scanner.nextInt();
+            scanner.nextLine();
 
-        choice = scanner.nextInt();
-        scanner.nextLine();
+            switch (choice) {
+                case 1:
+                    listCustomers();
+                    break;
+                case 2:
+                    addCustomer();
+                    break;
+                case 3:
+                    customerOperationsMenu();
+                    break;
+                case 0:
+                    System.out.println("Çıkış yapılıyor...");
+                    break;
+                default:
+                    System.out.println("Geçersiz seçim! Tekrar deneyin.");
 
-        switch (choice)
-        {
-            //1//   listCustomers();
-            //2//   addCustomer();
-            //3//   customerOperationsMenu();
-            //0//   System.out.println("Çıkış yapılıyor...");
-            // //   System.out.println("Geçersiz seçim! Tekrar deneyin.");
-
-            // NOT: MÜŞTERİ ÇIKIŞ YAPMADIĞI SÜRECE MENÜDE KALMAYA DEVAM ETSİN
-        }
+                    // NOT: MÜŞTERİ ÇIKIŞ YAPMADIĞI SÜRECE MENÜDE KALMAYA DEVAM ETSİN
+            }
+        }while(choice!=0);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
