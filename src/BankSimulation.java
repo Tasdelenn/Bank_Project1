@@ -7,8 +7,9 @@ public class BankSimulation {
     // FIELDS
     // TODO AÇIKLAMADA BELİRTİLEN FIELD LARI OLUŞTURUN.
     // Dokumanda istenilen (customers,accounts,scanner) fieldlari final olarak olusturun
-
-
+    private final Map<Integer, Customer> customers;
+    private final List<Account> accounts;
+    private final Scanner scanner;
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,20 +29,12 @@ public class BankSimulation {
     // TODO AÇIKLAMADA BELİRTİLEN CONSTRUCTORLARI OLUŞTURUN
 
 
-
-
-
-
-
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     public static void main(String[] args) {
 
         // TODO BANKSIMULATION SINIFININ NESNESİNİ OLUŞTURUNUZ
         // TODO  RUN METODUNU ÇAĞIRINIZ
-
-
-
 
 
     }
@@ -80,7 +73,6 @@ public class BankSimulation {
         System.out.println("\n----- MÜŞTERİLER -----");
 
 
-
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -92,8 +84,7 @@ public class BankSimulation {
                 " " + customer.getLastName() +
                 " HESAPLARI -----");
         boolean hasAccounts = false;
-        for (Account account : accounts)
-                {
+        for (Account account : accounts) {
             if (account.getCustomerId() == customer.getCustomerId()) {
                 System.out.println(account.getAccountId() +
                         " - " + account.getAccountType() +
@@ -149,150 +140,151 @@ public class BankSimulation {
             }
         } while (customerId != 0);
     }
-        ///////////////////////////////////////////////////////////////////////////////////////////
-        public void customerOperations (Customer customer){
-            int choice;
-            do {
-                System.out.println("\n----- " + customer.getFirstName() +
-                        " " + customer.getLastName() +
-                        " İŞLEMLERİ -----");
-                System.out.println("1. Yeni Hesap Aç");
-                System.out.println("2. Hesapları Listele");
-                System.out.println("3. Para Yatır");
-                System.out.println("4. Para Çek");
-                System.out.println("5. Bakiye Sorgula");
-                System.out.println("0. Ana Menüye Dön");
-                System.out.print("Seçiminizi yapın: ");
-                choice = scanner.nextInt();
-                scanner.nextLine();
 
-                switch (choice) {
-                    case 1:
-                        openNewAccount(customer);
-                        break;
-                    case 2:
-                        listCustomerAccounts(customer);
-                        break;
-                    case 3:
-                        depositToAccount(customer);
-                        break;
-                    case 4:
-                        withdrawToAccount(customer);
-                        break;
-                    case 5:
-                        checkBalance(customer);
-                        break;
-                    case 0:
-                        System.out.println("Ana menüye dönülüyor...");
-                        break;
-                    default:
-                        System.out.println("Geçersiz seçim! Tekrar deneyin.");
-                }
-            } while (choice != 0);
-        }
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    public void customerOperations(Customer customer) {
+        int choice;
+        do {
+            System.out.println("\n----- " + customer.getFirstName() +
+                    " " + customer.getLastName() +
+                    " İŞLEMLERİ -----");
+            System.out.println("1. Yeni Hesap Aç");
+            System.out.println("2. Hesapları Listele");
+            System.out.println("3. Para Yatır");
+            System.out.println("4. Para Çek");
+            System.out.println("5. Bakiye Sorgula");
+            System.out.println("0. Ana Menüye Dön");
+            System.out.print("Seçiminizi yapın: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    openNewAccount(customer);
+                    break;
+                case 2:
+                    listCustomerAccounts(customer);
+                    break;
+                case 3:
+                    depositToAccount(customer);
+                    break;
+                case 4:
+                    withdrawToAccount(customer);
+                    break;
+                case 5:
+                    checkBalance(customer);
+                    break;
+                case 0:
+                    System.out.println("Ana menüye dönülüyor...");
+                    break;
+                default:
+                    System.out.println("Geçersiz seçim! Tekrar deneyin.");
+            }
+        } while (choice != 0);
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
 
-        // TODO openNewAccount() methodunu olusturun
-        // HESAP AÇARKEN, AÇILACAK HESAP TÜRÜNÜ SEÇMEK İÇİN BİR MENÜ OLACAK...
-        // HESAP TÜRÜNÜ SEÇTİKTEN SONRA DA, ID ATAYARAK accounts LIST İNE YENİ HESABI EKLEYEN METOD
-        public void openNewAccount (Customer customer){
-            System.out.println("\n----- YENİ HESAP AÇ -----");
-            System.out.println("Hesap Türü Seçin:");
+    // TODO openNewAccount() methodunu olusturun
+    // HESAP AÇARKEN, AÇILACAK HESAP TÜRÜNÜ SEÇMEK İÇİN BİR MENÜ OLACAK...
+    // HESAP TÜRÜNÜ SEÇTİKTEN SONRA DA, ID ATAYARAK accounts LIST İNE YENİ HESABI EKLEYEN METOD
+    public void openNewAccount(Customer customer) {
+        System.out.println("\n----- YENİ HESAP AÇ -----");
+        System.out.println("Hesap Türü Seçin:");
 
-            /** SEÇİM YAPMASI İÇİN KULLANICIYA HESAP TÜRLERİNİ (ENUM) LİSTELEYİN... */
-            /** KULLANICIYA KONSOLDAN SEÇİM YAPTIRIN... */
-            /** SEÇİLEN DEĞERE GÖRE HESAP TÜRÜNÜ ATAYIN >> accountType (CHECKING-VADESİZ HES,
-             * SAVINGS-TASARRUF HES, CREDIT-KREDİ HES) GİBİ...*/
+        /** SEÇİM YAPMASI İÇİN KULLANICIYA HESAP TÜRLERİNİ (ENUM) LİSTELEYİN... */
+        /** KULLANICIYA KONSOLDAN SEÇİM YAPTIRIN... */
+        /** SEÇİLEN DEĞERE GÖRE HESAP TÜRÜNÜ ATAYIN >> accountType (CHECKING-VADESİZ HES,
+         * SAVINGS-TASARRUF HES, CREDIT-KREDİ HES) GİBİ...*/
 
-            /** TEKİL BİR HESAP ID'Sİ ATAYIN... HESAP LİSTESİNİN SİZE'INI KULLANARAK SAYAÇ ŞEKLİNDE ID ATANABİLİR...*/
+        /** TEKİL BİR HESAP ID'Sİ ATAYIN... HESAP LİSTESİNİN SİZE'INI KULLANARAK SAYAÇ ŞEKLİNDE ID ATANABİLİR...*/
 
-            /** ELDE ETTİĞİNİZ DEĞERLERE GÖRE HESAP LİSTESİNE (accounts) YENİ HESABI EKLEYİNİZ... */
+        /** ELDE ETTİĞİNİZ DEĞERLERE GÖRE HESAP LİSTESİNE (accounts) YENİ HESABI EKLEYİNİZ... */
 
-            /** NETİCE OLARAK HESAP EKLEME DURUMUNA GÖRE KULLANICIYA AŞAĞIDAKİ MESAJLARDAN BİRİNİ GÖSTERİN... */
-            System.out.println("Hesap başarıyla açıldı. Hesap Numarası: " + "accountId");
-            System.out.println("Geçersiz seçim! Yeni hesap açma işlemi iptal edildi.");
+        /** NETİCE OLARAK HESAP EKLEME DURUMUNA GÖRE KULLANICIYA AŞAĞIDAKİ MESAJLARDAN BİRİNİ GÖSTERİN... */
+        System.out.println("Hesap başarıyla açıldı. Hesap Numarası: " + "accountId");
+        System.out.println("Geçersiz seçim! Yeni hesap açma işlemi iptal edildi.");
 
-        }
-        ///////////////////////////////////////////////////////////////////////////////////////////
-
-
-        // TODO PARA EKLE ( deposit() ) METODU
-        public void depositToAccount (Customer customer){
-            System.out.println("\n----- PARA YATIR -----");
-            System.out.print("Hesap Numarasını Girin: ");
-            /** KULLANICIDAN HESAP NUMARASINI ALARAK GEREKLİ KONTROLLERİ GERÇEKLEŞTİRİN
-             * YATIRILMAK İSTENEN TUTAR NEGETİF Mİ? POZİTİF Mİ?
-             * BU KONTROLÜ, Accounts SINIFINDAN OLUŞTURDUĞUNUZ NESNENİN İÇİNDE depositToAmount(amount) GİBİ
-             * BİR METOD TANIMLAYARAK ORADA DA GERÇEKLEŞTİREBİLİRSİNİZ...
-             */
-
-            /** accountId VASITASIYLA İSTENEN HESABA ULAŞILABİLİR... */
-            /** KULLANICININ GİRDİĞİ HESAP NUMARASI İLGİLİ MÜŞTERİYE AİT Mİ DİYE KONTROL EDİLMELİDİR...*/
-            /** KONTROL SONUCUNDA HESAP SINIFI NESNESİNDEN ULAŞTIĞINIZ MÜŞTERİ ID Sİ İLE MÜŞTERİ SINIFININ
-             * NESNESİNDEN ULAŞACAĞINIZ MÜŞTERİ ID Sİ AYNI İSE, YATIRILACAK TUTARI KONSOLDA KULLANICIDAN ALIN,
-             * VE HESAP SINIFINDAKİ depositToAmount(amount) VASITASIYLA PARAYI YATIRIN...*/
-
-            /** AKSİ HALDE: KULLANICIYA "Geçersiz Hesap Numarası veya hesap sizin değil! İşlem iptal edildi."
-             * MESAJI VERİN...
-             */
-        }
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        // TODO PARA ÇEK ( withdraw() ) METODU
-        public void withdrawToAccount (Customer customer){
-            System.out.println("\n----- PARA ÇEK -----");
-            System.out.print("Hesap Numarasını Girin: ");
-
-            /** KULLANICIDAN HESAP NUMARASINI İSTEYEREK PARA ÇEKME İŞLEMİNİ GERÇEKLEŞTİRİN... */
-            /** İLGİLİ HESAPTAN PARA ÇEKERKEN, Accounts SINIFINDAKİ withdrawToAmount() METODUNU KULLANIN */
-            /** BU METOD VASITASIYLA TUTARIN NEGATİF OLMA DURUMU KONTROL EDİLEBİLİR... */
-            /** YİNE BU METOD VASITASIYLA ÇEKİLMEK İSTENEN TUTAR BAKİYEDEN BÜYÜK MÜ DİYE KONTROL EDİLEBİLİR...*/
-
-            /** accountId VASITASIYLA İSTENEN HESABA ULAŞILABİLİR... */
-            /** KULLANICININ GİRDİĞİ HESAP NUMARASI İLGİLİ MÜŞTERİYE AİT Mİ DİYE KONTROL EDİLMELİDİR...*/
-            /** KONTROL SONUCUNDA HESAP SINIFI NESNESİNDEN ULAŞTIĞINIZ MÜŞTERİ ID Sİ İLE MÜŞTERİ SINIFININ
-             * NESNESİNDEN ULAŞACAĞINIZ MÜŞTERİ ID Sİ AYNI İSE, ÇEKİLECEK TUTARI KONSOLDA KULLANICIDAN ALIN,
-             * VE HESAP SINIFINDAKİ withDrawToAmount(amount) VASITASIYLA PARAYI ÇEKİN...*/
-
-            /** AKSİ HALDE: KULLANICIYA "Geçersiz Hesap Numarası veya hesap sizin değil! İşlem iptal edildi."
-             * MESAJI VERİN...
-             */
-        }
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        //  TODO BAKİYE SORGULAMA İPUCU METODU
-        public void checkBalance (Customer customer){
-            System.out.println("\n----- BAKİYE SORGULA -----");
-            System.out.print("Hesap Numarasını Girin: ");
-            int accountId = scanner.nextInt();
-            scanner.nextLine();
-
-            Account account = getAccountById(accountId);
-            if (account != null && account.getCustomerId() == customer.getCustomerId()) {
-                System.out.println("Güncel bakiye: " + account.getBalance() + " TL");
-            } else {
-                System.out.println("Geçersiz Hesap Numarası veya hesap sizin değil! İşlem iptal edildi.");
-            }
-        }
-        ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        // İPUCU METODU
-        // Bu metot, accounts listesinde belirli bir hesabı aramak için kullanılır.
-        // Bu sayede, hesap işlemleri sırasında müşteriye ait doğru hesabın bulunması sağlanır.
-        // Örneğin, para çekme ve yatırma işlemlerinde, belirli bir müşteriye ait olan hesap bilgilerine
-        // doğru bir şekilde ulaşmak için bu metot kullanılır. Girilen accountId (hesap ID) 'sine
-        // sahip bir hesap bulunmazsa, metot null değerini döndürür (return null)
-        public Account getAccountById ( int accountId){
-            for (Account account : accounts) {
-                if (account.getAccountId() == accountId) {
-                    return account;
-                }
-            }
-            return null;
-        }
-        ///////////////////////////////////////////////////////////////////////////////////////////////////
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // TODO PARA EKLE ( deposit() ) METODU
+    public void depositToAccount(Customer customer) {
+        System.out.println("\n----- PARA YATIR -----");
+        System.out.print("Hesap Numarasını Girin: ");
+        /** KULLANICIDAN HESAP NUMARASINI ALARAK GEREKLİ KONTROLLERİ GERÇEKLEŞTİRİN
+         * YATIRILMAK İSTENEN TUTAR NEGETİF Mİ? POZİTİF Mİ?
+         * BU KONTROLÜ, Accounts SINIFINDAN OLUŞTURDUĞUNUZ NESNENİN İÇİNDE depositToAmount(amount) GİBİ
+         * BİR METOD TANIMLAYARAK ORADA DA GERÇEKLEŞTİREBİLİRSİNİZ...
+         */
+
+        /** accountId VASITASIYLA İSTENEN HESABA ULAŞILABİLİR... */
+        /** KULLANICININ GİRDİĞİ HESAP NUMARASI İLGİLİ MÜŞTERİYE AİT Mİ DİYE KONTROL EDİLMELİDİR...*/
+        /** KONTROL SONUCUNDA HESAP SINIFI NESNESİNDEN ULAŞTIĞINIZ MÜŞTERİ ID Sİ İLE MÜŞTERİ SINIFININ
+         * NESNESİNDEN ULAŞACAĞINIZ MÜŞTERİ ID Sİ AYNI İSE, YATIRILACAK TUTARI KONSOLDA KULLANICIDAN ALIN,
+         * VE HESAP SINIFINDAKİ depositToAmount(amount) VASITASIYLA PARAYI YATIRIN...*/
+
+        /** AKSİ HALDE: KULLANICIYA "Geçersiz Hesap Numarası veya hesap sizin değil! İşlem iptal edildi."
+         * MESAJI VERİN...
+         */
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // TODO PARA ÇEK ( withdraw() ) METODU
+    public void withdrawToAccount(Customer customer) {
+        System.out.println("\n----- PARA ÇEK -----");
+        System.out.print("Hesap Numarasını Girin: ");
+
+        /** KULLANICIDAN HESAP NUMARASINI İSTEYEREK PARA ÇEKME İŞLEMİNİ GERÇEKLEŞTİRİN... */
+        /** İLGİLİ HESAPTAN PARA ÇEKERKEN, Accounts SINIFINDAKİ withdrawToAmount() METODUNU KULLANIN */
+        /** BU METOD VASITASIYLA TUTARIN NEGATİF OLMA DURUMU KONTROL EDİLEBİLİR... */
+        /** YİNE BU METOD VASITASIYLA ÇEKİLMEK İSTENEN TUTAR BAKİYEDEN BÜYÜK MÜ DİYE KONTROL EDİLEBİLİR...*/
+
+        /** accountId VASITASIYLA İSTENEN HESABA ULAŞILABİLİR... */
+        /** KULLANICININ GİRDİĞİ HESAP NUMARASI İLGİLİ MÜŞTERİYE AİT Mİ DİYE KONTROL EDİLMELİDİR...*/
+        /** KONTROL SONUCUNDA HESAP SINIFI NESNESİNDEN ULAŞTIĞINIZ MÜŞTERİ ID Sİ İLE MÜŞTERİ SINIFININ
+         * NESNESİNDEN ULAŞACAĞINIZ MÜŞTERİ ID Sİ AYNI İSE, ÇEKİLECEK TUTARI KONSOLDA KULLANICIDAN ALIN,
+         * VE HESAP SINIFINDAKİ withDrawToAmount(amount) VASITASIYLA PARAYI ÇEKİN...*/
+
+        /** AKSİ HALDE: KULLANICIYA "Geçersiz Hesap Numarası veya hesap sizin değil! İşlem iptal edildi."
+         * MESAJI VERİN...
+         */
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //  TODO BAKİYE SORGULAMA İPUCU METODU
+    public void checkBalance(Customer customer) {
+        System.out.println("\n----- BAKİYE SORGULA -----");
+        System.out.print("Hesap Numarasını Girin: ");
+        int accountId = scanner.nextInt();
+        scanner.nextLine();
+
+        Account account = getAccountById(accountId);
+        if (account != null && account.getCustomerId() == customer.getCustomerId()) {
+            System.out.println("Güncel bakiye: " + account.getBalance() + " TL");
+        } else {
+            System.out.println("Geçersiz Hesap Numarası veya hesap sizin değil! İşlem iptal edildi.");
+        }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // İPUCU METODU
+    // Bu metot, accounts listesinde belirli bir hesabı aramak için kullanılır.
+    // Bu sayede, hesap işlemleri sırasında müşteriye ait doğru hesabın bulunması sağlanır.
+    // Örneğin, para çekme ve yatırma işlemlerinde, belirli bir müşteriye ait olan hesap bilgilerine
+    // doğru bir şekilde ulaşmak için bu metot kullanılır. Girilen accountId (hesap ID) 'sine
+    // sahip bir hesap bulunmazsa, metot null değerini döndürür (return null)
+    public Account getAccountById(int accountId) {
+        for (Account account : accounts) {
+            if (account.getAccountId() == accountId) {
+                return account;
+            }
+        }
+        return null;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+}
 
