@@ -7,13 +7,14 @@ public class Account {
     private int customerId;
     private double balance;
     private AccountType accountType;
+    private static int nextId=9000;
 
     // CONSTRUCTORS
     public Account() {
     }
 
-    public Account(int accountId, int customerId, AccountType accountType) {
-        this.accountId = accountId;
+    public Account( int customerId, AccountType accountType) {
+        this.accountId = ++nextId;
         this.customerId = customerId;
         this.accountType = accountType;
     }
@@ -21,8 +22,21 @@ public class Account {
     // GETTER AND SETTER METHODS
     // TODO GETTER VE SETTER METODLARINI OLUŞTURUN
 
+    public int getAccountId() {
+        return accountId;
+    }
 
+    public int getCustomerId() {
+        return customerId;
+    }
 
+    public double getBalance() {
+        return balance;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
 
 
 
@@ -70,9 +84,15 @@ public class Account {
 
     // TODO TO STRING METODUNU OLUŞTURUN
 
-
-
-
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountId=" + accountId +
+                ", customerId=" + customerId +
+                ", balance=" + balance +
+                ", accountType=" + accountType +
+                '}';
+    }
 
 
     ////////////////////////////////////////////////////////////////////////////////////////
